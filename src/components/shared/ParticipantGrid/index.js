@@ -121,7 +121,7 @@ const ParticipantGrid = ({ dominantSpeakerId }) => {
         }
         setParticipantState({ ...participantState, [anchor]: open });
         };
-        
+        console.log('participantGrid')
     return (
         <Box className={classes.root}>
             <Grid className={classes.container} style={{ height: viewportHeight, width: viewportWidth }} container item>
