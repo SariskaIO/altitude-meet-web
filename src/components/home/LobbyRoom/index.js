@@ -370,7 +370,7 @@ const LobbyRoom = ({ tracks }) => {
         console.log('USER_ROLE_CHANGED', id, role)
         if (conference.isModerator() && !testMode) {
           conference.enableLobby();
-          sendApiMessage();
+         // sendApiMessage();
           history.push(`/${meetingTitle}`);
         } else {
          // sendApiMessage();

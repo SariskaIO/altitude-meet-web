@@ -12,7 +12,7 @@ export function useDocumentSize() {
     function handleResize() {
         setDocumentSize(getDimensions());
     }
-
+    
     useLayoutEffect(() => {
         handleResize();
         window.addEventListener("resize", handleResize)

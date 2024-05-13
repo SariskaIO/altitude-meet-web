@@ -17,7 +17,7 @@ import { setPinParticipant } from "../../../store/actions/layout";
 import PinParticipant from "../PinParticipant";
 import classnames from "classnames";
 import { videoShadow, calculateSteamHeightAndExtraDiff, isMobileOrTab } from "../../../utils";
-import AudioLevelIndicator from "../AudioIndicator";
+//import AudioLevelIndicator from "../AudioIndicator";
 import SubTitle from "../SubTitle";
 import { useDocumentSize } from "../../../hooks/useDocumentSize";
 import { profile } from "../../../store/reducers/profile";
@@ -36,7 +36,6 @@ const VideoBox = ({
   isTranscription,
   numParticipants
 }) => {
-    
   const useStyles = makeStyles((theme) => ({
     root: {
       position: "relative",
@@ -174,24 +173,25 @@ const VideoBox = ({
       (track) => track.getType() === "video"
     );
   }
-  const audioTrack = participantTracks?.find((track) => track?.isAudioTrack());
-  const audioIndicator = useSelector((state) => state.audioIndicator);
-  const dispatch = useDispatch();
-  const [visiblePinParticipant, setVisiblePinPartcipant] = useState(true);
-  let audioLevel = audioIndicator[participantDetails?.id];
-  const subtitle = useSelector((state) => state.subtitle);
-  const conference = useSelector((state) => state.conference);
-  const { documentWidth, documentHeight } = useDocumentSize();
+   const audioTrack = participantTracks?.find((track) => track?.isAudioTrack());
+  // const audioIndicator = useSelector((state) => state.audioIndicator);
+   const dispatch = useDispatch();
+   const [visiblePinParticipant, setVisiblePinPartcipant] = useState(true);
+   //let audioLevel = audioIndicator[participantDetails?.id];
+   const subtitle = useSelector((state) => state.subtitle);
+   const conference = useSelector((state) => state.conference);
+   const { documentWidth, documentHeight } = useDocumentSize();
+   console.log('videobox')
 
-  const togglePinParticipant = (id) => {
-    dispatch(setPinParticipant(id, isPresenter));
-  };
+   const togglePinParticipant = (id) => {
+     dispatch(setPinParticipant(id, isPresenter));
+   };
 
-  const audioIndicatorActiveClasses = classnames(classes.avatar, {
-    largeVideo: isLargeVideo,
-  });
+  // const audioIndicatorActiveClasses = classnames(classes.avatar, {
+  //   largeVideo: isLargeVideo,
+  // });
 
-  const avatarActiveClasses = classnames(classes.avatarBox);
+   const avatarActiveClasses = classnames(classes.avatarBox);
   const { videoStreamHeight, videoStreamDiff } =
     calculateSteamHeightAndExtraDiff(
       width,
@@ -231,12 +231,12 @@ const VideoBox = ({
             style={
               isFilmstrip
                 ? {
-                    boxShadow: videoShadow(audioLevel),
+                   // boxShadow: videoShadow(audioLevel),
                     background: avatarColor,
                   }
                 : { background: avatarColor }
             }
-            className={audioIndicatorActiveClasses}
+            // className={audioIndicatorActiveClasses}
           >
             {participantDetails?.name?.slice(0, 1)?.toUpperCase()}
           </Avatar>
@@ -277,11 +277,11 @@ const VideoBox = ({
             : participantDetails?.name}
         </Typography>
       </Box>
-      {!isFilmstrip && (
-        <Box>
-          <AudioLevelIndicator passedAudioLevel={audioLevel} />
-        </Box>
-      )}
+      {/* {!isFilmstrip && (
+        // <Box>
+        //   <AudioLevelIndicator passedAudioLevel={audioLevel} />
+        // </Box>
+      )} */}
       {isTranscription && subtitle.text && (
         <Box className={classes.subtitle}>
           <SubTitle subtitle={subtitle} />

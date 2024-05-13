@@ -17,7 +17,7 @@ const Video = (props) => {
   if (!track) {
     return null;
   }
-
+  
   return (
     <video
       playsInline="1"
